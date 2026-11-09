@@ -35,16 +35,10 @@ Para cada técnica se compara contra una línea base sin regularización y se re
 
 El notebook se entrega con las salidas guardadas, así que se puede leer sin ejecutarlo.
 
-## Resultados destacados
-
-- Regresión softmax: accuracy de **0.6581 en test** y **0.9723 en train**, lo que indica sobreajuste.
-- El MLP no mejoró de forma clara al modelo lineal. Los promedios del `classification_report` del modelo lineal fueron levemente más altos, y en algunas categorías el MLP empeoró. La conclusión del notebook es que, para este dataset, el modelo más simple funciona mejor.
 
 ## Cómo ejecutarlo
 
 ### Opción 1: Google Colab
-
-Cada notebook tiene un botón **Open in Colab** en la primera celda. Las dependencias que faltan se instalan desde el propio notebook.
 
 ### Opción 2: entorno local
 
