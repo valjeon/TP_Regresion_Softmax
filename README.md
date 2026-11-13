@@ -14,6 +14,7 @@ Trabajo práctico de **Redes Neuronales**. Se clasifican posts del dataset **20 
 | `TP_softmax/runs/`, `TP_mlp/runs/` | Logs de TensorBoard de esas mismas corridas. |
 | `TP_regularizacion/mlflow.db` | Base de MLflow con los parámetros y las métricas por época de todas las corridas de `TNG_Regularizacion.ipynb`. |
 | `requirements.txt` | Dependencias de Python. |
+| `TP_cnn/CNN_en_Skin_Dataset.ipynb` | Clasificación de lesiones de piel con una red convolucional (CNN) sobre el Skin Dataset. |
 
 ## Qué hace el trabajo
 
@@ -61,6 +62,19 @@ jupyter notebook
 El entorno virtual (`.venv`) va en la raíz del repo y lo comparten los tres notebooks. No se sube al repositorio (está en `.gitignore`).
 
 Los notebooks descargan recursos de NLTK (`stopwords`, `wordnet` y `punkt`) en la celda de setup. Hace falta conexión a internet la primera vez, tanto para eso como para descargar el dataset.
+
+## Notebook de CNN (`TP_cnn/CNN_en_Skin_Dataset.ipynb`)
+
+Clasificación de imágenes de lesiones de piel (melanoma, nevus melanocítico, queratosis benigna, carcinoma de células escamosas, dermatofibroma, lesión vascular, dermatitis atópica, tiña, entre otras) con una red convolucional en PyTorch.
+
+**Dataset:** no está incluido en este repositorio por su tamaño (~170 MB). Se descarga del repositorio de la cátedra y se copia la carpeta `data/` dentro de `TP_cnn/`:
+
+```bash
+git clone https://github.com/cselmo/CNN-en-Skin-Dataset.git
+cp -r CNN-en-Skin-Dataset/data TP_cnn/data
+```
+
+Tiene que quedar así: `TP_cnn/data/Split_smol/train/<clase>/` y `TP_cnn/data/Split_smol/val/<clase>/`. La carpeta `TP_cnn/data/` está en `.gitignore`, así que no se sube.
 
 ### Ver los experimentos
 
