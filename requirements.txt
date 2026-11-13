@@ -10,3 +10,4 @@ mlflow
 optuna
 jupyter
 pillow
+pillow

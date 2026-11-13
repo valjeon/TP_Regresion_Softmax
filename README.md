@@ -65,7 +65,15 @@ Los notebooks descargan recursos de NLTK (`stopwords`, `wordnet` y `punkt`) en l
 
 ## Notebook de CNN (`TP_cnn/CNN_en_Skin_Dataset.ipynb`)
 
-Clasificación de imágenes de lesiones de piel (melanoma, nevus melanocítico, queratosis benigna, carcinoma de células escamosas, dermatofibroma, lesión vascular, dermatitis atópica, tiña, entre otras) con una red convolucional en PyTorch.
+Clasificación de imágenes de lesiones de piel con redes convolucionales en PyTorch. El notebook recorre:
+
+1. **Análisis exploratorio** del dataset: clases, cantidad de imágenes y tamaños.
+2. **Limpieza y partición:** eliminación de imágenes duplicadas y split estratificado.
+3. **Data augmentation implementado a mano**, aplicado solo sobre train y después del split, para que no haya fuga de información a validación y test.
+4. **De la MLP a la CNN:** comparación entre un perceptrón multicapa y una red convolucional sobre las mismas imágenes.
+5. **Decisiones de arquitectura convolucional** y efecto del data augmentation.
+6. **Elección del modelo final** con validación y evaluación en test una sola vez.
+7. **Qué aprende la red:** visualización de lo que capturan las capas convolucionales.
 
 **Dataset:** no está incluido en este repositorio por su tamaño (~170 MB). Se descarga del repositorio de la cátedra y se copia la carpeta `data/` dentro de `TP_cnn/`:
 
@@ -74,7 +82,8 @@ git clone https://github.com/cselmo/CNN-en-Skin-Dataset.git
 cp -r CNN-en-Skin-Dataset/data TP_cnn/data
 ```
 
-Tiene que quedar así: `TP_cnn/data/Split_smol/train/<clase>/` y `TP_cnn/data/Split_smol/val/<clase>/`. La carpeta `TP_cnn/data/` está en `.gitignore`, así que no se sube.
+La carpeta `TP_cnn/data/` está en `.gitignore`, así que no se sube.
+
 
 ### Ver los experimentos
 
