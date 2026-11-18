@@ -1,6 +1,6 @@
-# TP - Clasificación multiclase de texto con Regresión Softmax
+# TPs de Redes Neuronales
 
-Trabajo práctico de **Redes Neuronales**. Se clasifican posts del dataset **20 Newsgroups** (~18.000 mensajes de foros de Usenet, 20 categorías) con una regresión softmax implementada en PyTorch, y luego se compara contra un MLP.
+Trabajos prácticos de **Redes Neuronales**. Los tres primeros clasifican posts del dataset **20 Newsgroups** (~18.000 mensajes de foros de Usenet, 20 categorías): regresión softmax, MLP y regularización. El cuarto clasifica imágenes de lesiones de piel (ISIC, 9 clases) con una red convolucional.
 
 ## Contenido del repositorio
 
@@ -13,10 +13,11 @@ Trabajo práctico de **Redes Neuronales**. Se clasifican posts del dataset **20 
 | `TP_mlp/mlflow.db`, `TP_mlp/mlruns/` | Corridas de MLflow del notebook del MLP (trials, experimentos de arquitectura, búsqueda de sobreajuste y modelos finales) y los modelos guardados. |
 | `TP_softmax/runs/`, `TP_mlp/runs/` | Logs de TensorBoard de esas mismas corridas. |
 | `TP_regularizacion/mlflow.db` | Base de MLflow con los parámetros y las métricas por época de todas las corridas de `TNG_Regularizacion.ipynb`. |
+| `TP_cnn/CNN_en_Skin_Dataset.ipynb` | Clasificación de lesiones de piel (ISIC, 9 clases) con una red convolucional y comparación contra una MLP. |
 | `requirements.txt` | Dependencias de Python. |
-| `TP_cnn/CNN_en_Skin_Dataset.ipynb` | Clasificación de lesiones de piel con una red convolucional (CNN) sobre el Skin Dataset. |
 
-## Qué hace el trabajo
+
+## Qué hace el trabajo (TP1 y TP2: 20 Newsgroups)
 
 1. **Datos:** se carga 20 Newsgroups con `fetch_20newsgroups`, quitando `headers`, `footers` y `quotes` para que el problema no sea trivial.
 2. **Preprocesamiento configurable:** minúsculas, solo tokens alfabéticos, y opcionalmente remoción de stopwords y normalización (`none`, `stem` o `lemmatize`) con NLTK.
@@ -44,7 +45,7 @@ El notebook se entrega con las salidas guardadas, así que se puede leer sin eje
 
 ### Opción 1: Google Colab
 
-Cada notebook tiene un botón **Open in Colab** al principio. La primera celda instala `mlflow` y `optuna` (el resto de las librerías ya viene en Colab). Conviene activar la GPU en *Entorno de ejecución → Cambiar tipo de entorno de ejecución*, aunque los notebooks también corren en CPU.
+Los notebooks de 20 Newsgroups tienen un botón **Open in Colab** al principio, y su primera celda instala `mlflow` y `optuna` (el resto de las librerías ya viene en Colab).
 
 ### Opción 2: entorno local
 
@@ -61,7 +62,7 @@ jupyter notebook
 
 El entorno virtual (`.venv`) va en la raíz del repo y lo comparten los tres notebooks. No se sube al repositorio (está en `.gitignore`).
 
-Los notebooks descargan recursos de NLTK (`stopwords`, `wordnet` y `punkt`) en la celda de setup. Hace falta conexión a internet la primera vez, tanto para eso como para descargar el dataset.
+Los notebooks de 20 Newsgroups descargan recursos de NLTK (`stopwords`, `wordnet` y `punkt`) en la celda de setup. Hace falta conexión a internet la primera vez, tanto para eso como para descargar el dataset.
 
 ## Notebook de CNN (`TP_cnn/CNN_en_Skin_Dataset.ipynb`)
 
@@ -84,6 +85,13 @@ cp -r CNN-en-Skin-Dataset/data TP_cnn/data
 
 La carpeta `TP_cnn/data/` está en `.gitignore`, así que no se sube.
 
+**Cómo ejecutarlo:**
+
+1. Copiar el dataset como se indica arriba, para que quede en `TP_cnn/data/Split_smol/` (con `train/` y `val/`, una subcarpeta por clase).
+2. Abrir el notebook desde la carpeta `TP_cnn/`, porque usa la ruta relativa `data/Split_smol`.
+3. Ejecutar todas las celdas en orden. Tarda unos 20-25 minutos en CPU (usa GPU si está disponible).
+
+Se usan los valores por defecto de las constantes de la sección 0 (no se cambió ninguna). El notebook se entrega con las salidas guardadas, así que se puede leer sin ejecutarlo. Este TP no usa MLflow ni TensorBoard y no guarda modelos entrenados.
 
 ### Ver los experimentos
 
